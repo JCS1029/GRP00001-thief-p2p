@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://police-thief-p2p.invalid/schemas/0.2.0/rate_limits.schema.json",
+  "title": "Per-Service Gatekeeper Profiles",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "services"],
+  "properties": {
+    "schema_version": {"const": "0.2.0"},
+    "services": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {"pattern": "^[a-z][a-z0-9_-]{0,63}$"},
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["requests_per_minute", "burst_capacity", "concurrent_requests", "retry_backoff_sec", "max_retries", "queue_depth", "timeout_sec", "daily_quota", "session_quota", "circuit_failure_threshold", "circuit_cooldown_sec", "repeated_call_limit", "sustained_error_limit"],
+        "properties": {
+          "requests_per_minute": {"type": "integer", "minimum": 1, "maximum": 30},
+          "burst_capacity": {"type": "integer", "minimum": 1, "maximum": 30},
+          "concurrent_requests": {"type": "integer", "minimum": 1, "maximum": 2},
+          "retry_backoff_sec": {"type": "integer", "minimum": 5, "maximum": 86400},
+          "max_retries": {"type": "integer", "minimum": 3, "maximum": 100},
+          "queue_depth": {"type": "integer", "minimum": 100, "maximum": 1000000},
+          "timeout_sec": {"type": "integer", "minimum": 1, "maximum": 86400},
+          "daily_quota": {"type": "integer", "minimum": 1},
+          "session_quota": {"type": "integer", "minimum": 1},
+          "circuit_failure_threshold": {"type": "integer", "minimum": 1, "maximum": 100},
+          "circuit_cooldown_sec": {"type": "integer", "minimum": 1, "maximum": 86400},
+          "repeated_call_limit": {"type": "integer", "minimum": 2, "maximum": 1000},
+          "sustained_error_limit": {"type": "integer", "minimum": 2, "maximum": 1000}
+        }
+      }
+    }
+  }
+}
