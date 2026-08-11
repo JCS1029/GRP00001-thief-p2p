@@ -1,7 +1,7 @@
 {
   "role": "thief",
-  "canonical_commit": "9409507244a273c95d55f2c0a38355a87adef059",
-  "files_copied": 528,
+  "canonical_commit": "bef5284131c66caf298270ac83ae13f4351ef14d",
+  "files_copied": 549,
   "repository": "https://github.com/JCS1029/GRP00001-thief-p2p",
   "sibling_repository": "https://github.com/JCS1029/GRP00001-police-p2p",
   "package_name": "grp00001-thief-p2p"

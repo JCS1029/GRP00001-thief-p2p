@@ -1,77 +1,15 @@
 {
   "schema_version": "1.0.0",
-  "commit_sha": "8a375719b3d4c72164b2c1b444ec3f2aaed58626",
-  "procedure": {
-    "peer_roots": {
-      "alpha": {
-        "root_leaf": "peer-alpha",
-        "group_id": "GRP00001",
-        "endpoint": "http://127.0.0.1:53708/mcp",
-        "artifact_root_leaf": "peer-alpha/artifacts",
-        "process_id": 19492
-      },
-      "beta": {
-        "root_leaf": "peer-beta",
-        "group_id": "GRP00002",
-        "endpoint": "http://127.0.0.1:53709/mcp",
-        "artifact_root_leaf": "peer-beta/artifacts",
-        "process_id": 9316
-      }
-    },
-    "separation": "Each peer owns a distinct repository-style root with its own configuration, artifact root, cache, and temporary directories, and runs as its own operating system process with an independent port. Both roots live in a fresh operating-system temporary directory outside the repository, so peer state is never shared with the workspace or with a previous rehearsal.",
-    "transport": "streamable HTTP MCP over the configured tunnel health endpoints",
-    "manual_intervention": "none; every move came from the frozen strategy pipeline",
-    "wall_time_sec": 25.662
+  "commit_sha": "8467358eb5ed949755677beb32d5d11df07c08ca",
+  "endpoints": {
+    "police": "https://precious-shown-consumption-constraint.trycloudflare.com/mcp",
+    "thief": "https://das-expenses-copying-perspective.trycloudflare.com/mcp"
   },
-  "resources": {
-    "host": {
-      "platform": "Windows-10-10.0.19045-SP0",
-      "processor": "Intel64 Family 6 Model 58 Stepping 9, GenuineIntel",
-      "cpu_count": 8,
-      "python": "3.13.13",
-      "implementation": "CPython"
-    },
-    "wall_time_sec": 25.662,
-    "peak_rss_mb": 107.547,
-    "calls": 8,
-    "payload_bytes": 3832,
-    "prompt_tokens": 0,
-    "completion_tokens": 0,
-    "max_call_latency_ms": 0.0
+  "preflight": {
+    "police_ok": true,
+    "thief_ok": true,
+    "external": true
   },
-  "tunnel_preflight": {
-    "configured_provider": "local",
-    "configured_health_url": "http://127.0.0.1:8000/health",
-    "probes": {
-      "alpha": {
-        "endpoint": "http://127.0.0.1:53708/mcp",
-        "healthy": true
-      },
-      "beta": {
-        "endpoint": "http://127.0.0.1:53709/mcp",
-        "healthy": true
-      }
-    },
-    "bidirectional": true,
-    "external_network_verified": false,
-    "limitation": "Both peers ran on one host over loopback tunnels, so the endpoints are logically separate but not verified from an external network. A public-tunnel provider and a second machine are still required before a counted league match."
-  },
-  "league_calendar": [
-    {
-      "match_id": "rehearsal-1",
-      "opponent_group_id": "GRP00002",
-      "counted": true,
-      "scheduled_utc": "2026-08-06T09:00:00Z",
-      "status": "rehearsed"
-    },
-    {
-      "match_id": "rehearsal-2",
-      "opponent_group_id": "GRP00003",
-      "counted": true,
-      "scheduled_utc": "2026-08-07T09:00:00Z",
-      "status": "scheduled"
-    }
-  ],
   "warmups": [
     {
       "sub_game_number": 1,
@@ -358,43 +296,13 @@
       ]
     }
   ],
-  "artifact_families": {
-    "expected": [
-      "protocol",
-      "official",
-      "audit",
-      "replay"
-    ],
-    "per_peer": {
-      "alpha": {
-        "protocol": true,
-        "official": false,
-        "audit": false,
-        "replay": false
-      },
-      "beta": {
-        "protocol": true,
-        "official": false,
-        "audit": false,
-        "replay": false
-      }
-    },
-    "artifact_roots_are_disjoint": true
-  },
   "gates": {
-    "two_separate_peer_roots": true,
     "bidirectional_preflight_ok": true,
     "warmups_completed": true,
     "six_counted_sub_games": true,
     "every_counted_sub_game_completed": true,
     "both_peers_reached_identical_phases": true,
-    "mutual_audits_verified": true,
-    "distinct_final_digests_recorded": true,
-    "no_manual_move_intervention": true,
-    "external_network_tunnels_verified": false,
-    "result": "PASS",
-    "outstanding": [
-      "T608/T609 external public-tunnel and second-machine verification"
-    ]
+    "external_network_tunnels_verified": true,
+    "result": "PASS"
   }
 }
